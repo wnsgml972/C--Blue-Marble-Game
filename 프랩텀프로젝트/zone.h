@@ -1,0 +1,86 @@
+#ifndef ZONE_H
+#define ZONE_H
+
+#include "define.h"
+#include "common.h"
+#include "struct.h"
+
+//////////////////////////////// 지역 /////////////////////////////////////////
+//40지역
+
+void insert_zone(char name[], int index, int X, int Y, int Z_cost, int H_cost, int B_cost, int V_cost, int Z_toll, int H_toll, int B_toll, int V_toll)
+{
+	strcpy(Zone[index].zone_name, name);
+	Zone[index].zone_index = index;
+
+	// 주인 없음
+	Zone[index].owner = 0;
+
+	// 건물 없음
+	Zone[index].building = 0;
+	Zone[index].hotel = 0;
+	Zone[index].villa = 0;
+
+	//가격
+	Zone[index].zone_cost = Z_cost;
+	Zone[index].hotel_cost = H_cost;
+	Zone[index].building_cost = B_cost;
+	Zone[index].villa_cost = V_cost;
+
+	//위치 정보
+	Zone[index].zone_X = X;		// 각 플레이어만큼 두칸씩 옆으로
+	Zone[index].zone_Y = Y;
+
+	//통행료
+	Zone[index].zone_toll = Z_toll;
+	Zone[index].hotel_toll = H_toll;
+	Zone[index].building_toll = B_toll;
+	Zone[index].villa_toll = V_toll;
+
+}
+//모로코 황금열쇠 알제리 리비아
+void zone_init(void)
+{
+	insert_zone("출발", 0, 143, 53, 0, 0, 0, 0, 0, 0, 0, 0);	//출발
+	insert_zone("모로코", 1, 129, 53, ZONE_COST_A, HOTEL_COST_A, BUILDING_COST_A, VILLA_COST_A, TOLL(ZONE_COST_A), TOLL(HOTEL_COST_A), TOLL(BUILDING_COST_A), TOLL(VILLA_COST_A));
+	insert_zone("황금열쇠", 2, 115, 53, 0, 0, 0, 0, 0, 0, 0, 0);	//황금열쇠
+	insert_zone("알제리", 3, 101, 53, ZONE_COST_B, HOTEL_COST_B, BUILDING_COST_B, VILLA_COST_B, TOLL(ZONE_COST_B), TOLL(HOTEL_COST_B), TOLL(BUILDING_COST_B), TOLL(VILLA_COST_B));
+	insert_zone("리비아", 4, 87, 53, ZONE_COST_A, HOTEL_COST_A, BUILDING_COST_A, VILLA_COST_A, TOLL(ZONE_COST_A), TOLL(HOTEL_COST_A), TOLL(BUILDING_COST_A), TOLL(VILLA_COST_A));
+	insert_zone("이집트", 5, 73, 53, ZONE_COST_A, HOTEL_COST_A, BUILDING_COST_A, VILLA_COST_A, TOLL(ZONE_COST_A), TOLL(HOTEL_COST_A), TOLL(BUILDING_COST_A), TOLL(VILLA_COST_A));
+	insert_zone("모리타니", 6, 59, 53, ZONE_COST_B, HOTEL_COST_B, BUILDING_COST_B, VILLA_COST_B, TOLL(ZONE_COST_B), TOLL(HOTEL_COST_B), TOLL(BUILDING_COST_B), TOLL(VILLA_COST_B));
+	insert_zone("황금열쇠", 7, 45, 53, 0, 0, 0, 0, 0, 0, 0, 0);	//황금열쇠
+	insert_zone("세네갈", 8, 31, 53, ZONE_COST_A, HOTEL_COST_A, BUILDING_COST_A, VILLA_COST_A, TOLL(ZONE_COST_A), TOLL(HOTEL_COST_A), TOLL(BUILDING_COST_A), TOLL(VILLA_COST_A));
+	insert_zone("라이베리아", 9, 17, 53, ZONE_COST_B, HOTEL_COST_B, BUILDING_COST_B, VILLA_COST_B, TOLL(ZONE_COST_B), TOLL(HOTEL_COST_B), TOLL(BUILDING_COST_B), TOLL(VILLA_COST_B));
+	insert_zone("무인도", 10, 3, 53, 0, 0, 0, 0, 0, 0, 0, 0);	//무인도
+	insert_zone("리제르", 11, 3, 48, ZONE_COST_A, HOTEL_COST_A, BUILDING_COST_A, VILLA_COST_A, TOLL(ZONE_COST_A), TOLL(HOTEL_COST_A), TOLL(BUILDING_COST_A), TOLL(VILLA_COST_A));
+	insert_zone("황금열쇠", 12, 3, 43, 0, 0, 0, 0, 0, 0, 0, 0); //황금열쇠
+	insert_zone("차드", 13, 3, 38, ZONE_COST_C, HOTEL_COST_C, BUILDING_COST_C, VILLA_COST_C, TOLL(ZONE_COST_C), TOLL(HOTEL_COST_C), TOLL(BUILDING_COST_C), TOLL(VILLA_COST_C));
+	insert_zone("수단", 14, 3, 33, ZONE_COST_A, HOTEL_COST_A, BUILDING_COST_A, VILLA_COST_A, TOLL(ZONE_COST_A), TOLL(HOTEL_COST_A), TOLL(BUILDING_COST_A), TOLL(VILLA_COST_A));
+	insert_zone("나이지리아", 15, 3, 28, ZONE_COST_B, HOTEL_COST_B, BUILDING_COST_B, VILLA_COST_B, TOLL(ZONE_COST_B), TOLL(HOTEL_COST_B), TOLL(BUILDING_COST_B), TOLL(VILLA_COST_B));
+	insert_zone("에티오피아", 16, 3, 23, ZONE_COST_B, HOTEL_COST_B, BUILDING_COST_B, VILLA_COST_B, TOLL(ZONE_COST_B), TOLL(HOTEL_COST_B), TOLL(BUILDING_COST_B), TOLL(VILLA_COST_B));
+	insert_zone("황금열쇠", 17, 3, 18, 0, 0, 0, 0, 0, 0, 0, 0); //황금열쇠
+	insert_zone("소말리아", 18, 3, 13, ZONE_COST_C, HOTEL_COST_C, BUILDING_COST_C, VILLA_COST_C, TOLL(ZONE_COST_C), TOLL(HOTEL_COST_C), TOLL(BUILDING_COST_C), TOLL(VILLA_COST_C));
+	insert_zone("케냐", 19, 3, 8, ZONE_COST_A, HOTEL_COST_A, BUILDING_COST_A, VILLA_COST_A, TOLL(ZONE_COST_A), TOLL(HOTEL_COST_A), TOLL(BUILDING_COST_A), TOLL(VILLA_COST_A));
+	insert_zone("탄지니아", 20, 3, 3, ZONE_COST_B, HOTEL_COST_B, BUILDING_COST_B, VILLA_COST_B, TOLL(ZONE_COST_B), TOLL(HOTEL_COST_B), TOLL(BUILDING_COST_B), TOLL(VILLA_COST_B));
+	insert_zone("마다가스카르", 21, 17, 3, ZONE_COST_C, HOTEL_COST_C, BUILDING_COST_C, VILLA_COST_C, TOLL(ZONE_COST_C), TOLL(HOTEL_COST_C), TOLL(BUILDING_COST_C), TOLL(VILLA_COST_C));
+	insert_zone("황금열쇠", 22, 31, 3, 0, 0, 0, 0, 0, 0, 0, 0);	//황금열쇠
+	insert_zone("앙골라", 23, 45, 3, ZONE_COST_A, HOTEL_COST_A, BUILDING_COST_A, VILLA_COST_A, TOLL(ZONE_COST_A), TOLL(HOTEL_COST_A), TOLL(BUILDING_COST_A), TOLL(VILLA_COST_A));
+	insert_zone("콩고", 24, 59, 3, ZONE_COST_B, HOTEL_COST_B, BUILDING_COST_B, VILLA_COST_B, TOLL(ZONE_COST_B), TOLL(HOTEL_COST_B), TOLL(BUILDING_COST_B), TOLL(VILLA_COST_B));
+	insert_zone("부산", 25, 73, 3, ZONE_COST_C, HOTEL_COST_C, BUILDING_COST_C, VILLA_COST_C, TOLL(ZONE_COST_C), TOLL(HOTEL_COST_C), TOLL(BUILDING_COST_C), TOLL(VILLA_COST_C));
+	insert_zone("보츠와나", 26, 87, 3, ZONE_COST_C, HOTEL_COST_C, BUILDING_COST_C, VILLA_COST_C, TOLL(ZONE_COST_C), TOLL(HOTEL_COST_C), TOLL(BUILDING_COST_C), TOLL(VILLA_COST_C));
+	insert_zone("남아공", 27, 101, 3, ZONE_COST_C, HOTEL_COST_C, BUILDING_COST_C, VILLA_COST_C, TOLL(ZONE_COST_C), TOLL(HOTEL_COST_C), TOLL(BUILDING_COST_C), TOLL(VILLA_COST_C));
+	insert_zone("터키", 28, 115, 3, ZONE_COST_A, HOTEL_COST_A, BUILDING_COST_A, VILLA_COST_A, TOLL(ZONE_COST_A), TOLL(HOTEL_COST_A), TOLL(BUILDING_COST_A), TOLL(VILLA_COST_A));
+	insert_zone("시리아", 29, 129, 3, ZONE_COST_B, HOTEL_COST_B, BUILDING_COST_B, VILLA_COST_B, TOLL(ZONE_COST_B), TOLL(HOTEL_COST_B), TOLL(BUILDING_COST_B), TOLL(VILLA_COST_B));
+	insert_zone("우주여행", 30, 143, 3, 0, 0, 0, 0, 0, 0, 0, 0);	//우주여행
+	insert_zone("레바논", 31, 143, 8, ZONE_COST_A, HOTEL_COST_A, BUILDING_COST_A, VILLA_COST_A, TOLL(ZONE_COST_A), TOLL(HOTEL_COST_A), TOLL(BUILDING_COST_A), TOLL(VILLA_COST_A));
+	insert_zone("이스라엘", 32, 143, 13, ZONE_COST_B, HOTEL_COST_B, BUILDING_COST_B, VILLA_COST_B, TOLL(ZONE_COST_B), TOLL(HOTEL_COST_B), TOLL(BUILDING_COST_B), TOLL(VILLA_COST_B));
+	insert_zone("요르단", 33, 143, 18, ZONE_COST_A, HOTEL_COST_A, BUILDING_COST_A, VILLA_COST_A, TOLL(ZONE_COST_A), TOLL(HOTEL_COST_A), TOLL(BUILDING_COST_A), TOLL(VILLA_COST_A));
+	insert_zone("이라크", 34, 143, 23, ZONE_COST_C, HOTEL_COST_C, BUILDING_COST_C, VILLA_COST_C, TOLL(ZONE_COST_C), TOLL(HOTEL_COST_C), TOLL(BUILDING_COST_C), TOLL(VILLA_COST_C));
+	insert_zone("황금열쇠", 35, 143, 28, 0, 0, 0, 0, 0, 0, 0, 0); //황금열쇠
+	insert_zone("쿠에이트", 36, 143, 33, ZONE_COST_C, HOTEL_COST_C, BUILDING_COST_C, VILLA_COST_C, TOLL(ZONE_COST_C), TOLL(HOTEL_COST_C), TOLL(BUILDING_COST_C), TOLL(VILLA_COST_C));
+	insert_zone("이란", 37, 143, 38, ZONE_COST_A, HOTEL_COST_A, BUILDING_COST_A, VILLA_COST_A, TOLL(ZONE_COST_A), TOLL(HOTEL_COST_A), TOLL(BUILDING_COST_A), TOLL(VILLA_COST_A));
+	insert_zone("아프가니스탄", 38, 143, 43, ZONE_COST_A, HOTEL_COST_A, BUILDING_COST_A, VILLA_COST_A, TOLL(ZONE_COST_A), TOLL(HOTEL_COST_A), TOLL(BUILDING_COST_A), TOLL(VILLA_COST_A));
+	insert_zone("한국", 39, 143, 48, ZONE_COST_A, HOTEL_COST_A, BUILDING_COST_A, VILLA_COST_A, TOLL(ZONE_COST_C), TOLL(HOTEL_COST_C), TOLL(HOTEL_COST_C), TOLL(HOTEL_COST_C)); //한국!
+}
+
+#endif
